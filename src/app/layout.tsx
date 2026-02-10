@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     title: "ChainClash",
     description: "Turn-based card battler on Base",
   },
+  other: {
+    "base:app_id": "698b77beabdd1887a89d9906",
+  },
 };
 
 export default function RootLayout({

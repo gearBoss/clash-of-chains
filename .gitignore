@@ -41,3 +41,8 @@ prisma/dev.db-journal
 contracts/out/
 contracts/cache/
 contracts/lib/
+
+# hardhat
+contracts/deploy-hardhat/node_modules/
+contracts/deploy-hardhat/artifacts/
+contracts/deploy-hardhat/cache/

@@ -1,0 +1,17 @@
+{
+  "name": "chainclash-deploy",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js --network baseSepolia"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-ethers": "^4.0.4",
+    "@openzeppelin/contracts": "^5.4.0",
+    "ethers": "^6.16.0",
+    "hardhat": "^3.1.7",
+    "viem": "^2.45.2"
+  },
+  "type": "module"
+}
