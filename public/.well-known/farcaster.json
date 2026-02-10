@@ -1,0 +1,18 @@
+{
+  "accountAssociation": {
+    "header": "REPLACE_WITH_REAL_HEADER",
+    "payload": "REPLACE_WITH_REAL_PAYLOAD",
+    "signature": "REPLACE_WITH_REAL_SIGNATURE"
+  },
+  "frame": {
+    "version": "1",
+    "name": "ChainClash",
+    "iconUrl": "https://your-app.vercel.app/icon.png",
+    "homeUrl": "https://your-app.vercel.app",
+    "imageUrl": "https://your-app.vercel.app/og.png",
+    "buttonTitle": "Play ChainClash",
+    "splashImageUrl": "https://your-app.vercel.app/splash.png",
+    "splashBackgroundColor": "#0a0a1a",
+    "webhookUrl": "https://your-app.vercel.app/api/webhook"
+  }
+}

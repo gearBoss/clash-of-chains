@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Player {
+  id          String   @id // wallet address lowercase
+  rating      Int      @default(1000)
+  wins        Int      @default(0)
+  losses      Int      @default(0)
+  deckCardIds String?  // JSON array of card IDs (up to 15)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  matchesAsP1 Match[]  @relation("MatchP1")
+  matchesAsP2 Match[]  @relation("MatchP2")
+  moves       Move[]
+  sessions    Session[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  playerId  String
+  player    Player   @relation(fields: [playerId], references: [id])
+  nonce     String   @unique
+  verified  Boolean  @default(false)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Match {
+  id            String      @id @default(cuid())
+  matchHash     String      @unique // bytes32 for onchain anchoring
+  p1Id          String
+  p1            Player      @relation("MatchP1", fields: [p1Id], references: [id])
+  p2Id          String?
+  p2            Player?     @relation("MatchP2", fields: [p2Id], references: [id])
+  p1DeckIds     String      // JSON array of card IDs
+  p2DeckIds     String?     // JSON array of card IDs
+  serverSalt    String      // secret salt for deterministic RNG
+  gameState     String      // JSON serialized GameState
+  status        String      @default("WAITING") // WAITING | ACTIVE | COMPLETED | FORFEITED | ANCHORED
+  currentTurn   Int         @default(0) // 0 = p1, 1 = p2
+  turnNumber    Int         @default(0)
+  winnerId      String?
+  ratingDeltaP1 Int?
+  ratingDeltaP2 Int?
+  txHash        String?     // onchain anchor transaction hash
+  lastMoveAt    DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  moves Move[]
+}
+
+model Move {
+  id         String   @id @default(cuid())
+  matchId    String
+  match      Match    @relation(fields: [matchId], references: [id])
+  playerId   String
+  player     Player   @relation(fields: [playerId], references: [id])
+  turnNumber Int
+  cardIndex  Int      // -1 = pass
+  moveHash   String   // hash chain for integrity
+  createdAt  DateTime @default(now())
+}
