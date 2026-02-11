@@ -13,6 +13,19 @@
     "buttonTitle": "Play ChainClash",
     "splashImageUrl": "https://chain-clash-lemon.vercel.app/splash.png",
     "splashBackgroundColor": "#0a0a1a",
-    "webhookUrl": "https://chain-clash-lemon.vercel.app/api/webhook"
+    "webhookUrl": "https://chain-clash-lemon.vercel.app/api/webhook",
+    "primaryCategory": "games",
+    "tags": ["pvp", "battle", "strategy", "web3", "base"],
+    "subtitle": "PvP Battle Arena",
+    "description": "Compete in real-time PvP battles on Base blockchain.",
+    "screenshotUrls": [
+      "https://chain-clash-lemon.vercel.app/screenshots/1.png",
+      "https://chain-clash-lemon.vercel.app/screenshots/2.png"
+    ],
+    "heroImageUrl": "https://chain-clash-lemon.vercel.app/hero.png",
+    "tagline": "Battle. Win. Earn.",
+    "ogTitle": "ChainClash",
+    "ogDescription": "PvP battle arena on Base",
+    "ogImageUrl": "https://chain-clash-lemon.vercel.app/og.png"
   }
 }
